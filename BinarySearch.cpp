@@ -12,20 +12,34 @@ int main(void)
 
     low=0;
     high=N-1;
+    // while (low<=high){
+    //     mid=(low+high)/2;
+    //     if (a[mid]==key){
+    //         printf("%d は %d 番目にありました\n", a[mid], mid + 1);
+    //         flag=1;
+    //         break;
+    //     }
+    //     if (a[mid]<key)
+    //         low=mid+1;
+    //     else
+    //         high=mid-1;
+    // }
+
+    // if (flag!=1)
+    //     printf("見つかりませんでした。\n");
+
+    // breakなし
     while (low<=high){
         mid=(low+high)/2;
-            printf("%d\n", mid);
-        if (a[mid]==key){
-            printf("%d は %d 番目にありました\n", a[mid], mid + 1);
-            flag=1;
-            break;
-        }
-        if (a[mid]<key)
+        if (a[mid]<=key)
             low=mid+1;
-        else
+        if (a[mid]>=key)
             high=mid-1;
     }
 
-    if (flag!=1)
+    if (low == high + 2) {
+        printf("%d は %d 番目にありました\n", a[mid], mid + 1);
+    } else {
         printf("見つかりませんでした。\n");
+    }
 }

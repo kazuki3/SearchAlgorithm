@@ -6,20 +6,36 @@
 
     $low = 0;
     $high = count($array) - 1;
-    $flag = 0;
+    // $flag = 0;
+    // while ($low <= $high) {
+    //     $mid = floor(($low + $high) / 2);
+    //     if ($array[$mid] == $key) {
+    //         echo sprintf("%d は %d 番目にありました\n", $array[$mid], $mid + 1);
+    //         $flag=1;
+    //         break;
+    //     }
+    //     if ($array[$mid] < $key) {
+    //         $low = $mid + 1;
+    //     } else {
+    //         $high = $mid - 1;
+    //     }
+    // }
+    // if ($flag !== 1) {
+    //     echo "見つかりませんでした\n";
+    // }
+
+    // breakなし
     while ($low <= $high) {
         $mid = floor(($low + $high) / 2);
-        if ($array[$mid] == $key) {
-            echo sprintf("%d は %d 番目にありました\n", $array[$mid], $mid + 1);
-            $flag=1;
-            break;
-        }
-        if ($array[$mid] < $key) {
+        if ($array[$mid] <= $key) {
             $low = $mid + 1;
-        } else {
+        }
+        if ($array[$mid] >= $key) {
             $high = $mid - 1;
         }
     }
-    if ($flag !== 1) {
+    if ($low === $high + 2) {
+        echo sprintf("%d は %d 番目にありました\n", $array[$mid], $mid + 1);
+    } else {
         echo "見つかりませんでした\n";
     }
